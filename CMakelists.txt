@@ -1,0 +1,54 @@
+cmake_minimum_required (VERSION 2.6)
+
+# project
+set(PROJECT_NAME PesudoDouban)
+project(${PROJECT_NAME})
+
+# path
+set (BASE_PATH .)
+set (MUTSH_PATH ./third_party/mstch)
+
+# for c++11
+add_definitions(-std=c++14)
+
+# Options. Turn on with 'cmake -Dmyvarname=ON'.
+option(test "Build all tests." OFF) # Makes boolean 'test' available.
+set(CMAKE_CXX_FLAGS "-g -Wall")
+
+# normal 
+# include
+include_directories(
+    ${BASE_PATH}
+    ${BASE_PATH}include
+    ${MUTSH_PATH}/include
+)
+
+# add executable
+set (${PROJECT_NAME}_SRC
+    ${SOME_LIB_PATH}src/front.cpp
+)
+# generate project as a lib, so we can reuse it when testing
+add_library(${PROJECT_NAME}_lib ${${PROJECT_NAME}_SRC})
+add_executable (${PROJECT_NAME} ${BASE_PATH}src/main.cpp)
+target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}_lib)
+
+# test
+if (test)
+  # This adds another subdirectory, which has 'project(gtest)'.
+  enable_testing()
+
+  # Unit Tests(can be more)
+  # add_executable(runUnitTests test1_project.cpp) 
+  # target_link_libraries(runUnitTests gtest gtest_main) # Standard linking to gtest stuff.
+  # target_link_libraries(runUnitTests ${PROJECT_NAME}_lib) # link project
+
+  # add_executable(runUnitTests test2_project.cpp) 
+  # target_link_libraries(runUnitTests gtest gtest_main) # Standard linking to gtest stuff.
+  # target_link_libraries(runUnitTests ${PROJECT_NAME}_lib) # link project
+
+  # This is so you can do 'make test' to see all your tests run, instead of
+    # manually running the executable runUnitTests to see those specific tests.
+  # add_test(test_name1 runUnitTests1)
+  # add_test(test_name2 runUnitTests2)
+
+endif()
