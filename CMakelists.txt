@@ -5,8 +5,7 @@ set(PROJECT_NAME PesudoDouban)
 project(${PROJECT_NAME})
 
 # path
-set (BASE_PATH .)
-set (MUTSH_PATH ./third_party/mstch)
+set (BASE_PATH ./)
 
 # for c++11
 add_definitions(-std=c++14)
@@ -15,22 +14,26 @@ add_definitions(-std=c++14)
 option(test "Build all tests." OFF) # Makes boolean 'test' available.
 set(CMAKE_CXX_FLAGS "-g -Wall")
 
+# for mstch
+add_subdirectory(third_party/mstch)
+include_directories(${mstch_INCLUDE_DIR})
+
 # normal 
 # include
 include_directories(
     ${BASE_PATH}
     ${BASE_PATH}include
-    ${MUTSH_PATH}/include
 )
 
 # add executable
 set (${PROJECT_NAME}_SRC
-    ${SOME_LIB_PATH}src/front.cpp
+    ${BASE_PATH}src/front.cpp
 )
 # generate project as a lib, so we can reuse it when testing
 add_library(${PROJECT_NAME}_lib ${${PROJECT_NAME}_SRC})
 add_executable (${PROJECT_NAME} ${BASE_PATH}src/main.cpp)
 target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}_lib)
+target_link_libraries(${PROJECT_NAME} mstch)
 
 # test
 if (test)
