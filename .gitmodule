@@ -1,3 +1,3 @@
 [submodule "mstch"]
-	path = mstch
+	path = ./third_party/mstch
 	url = https://github.com/no1msd/mstch
