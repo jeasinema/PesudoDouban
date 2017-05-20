@@ -33,22 +33,26 @@ target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}_lib)
 
 # for mstch
 find_package (mstch)
-#if (MSTCH_FOUND)
-    include_directories(${MSTCH_INCLUDE_DIRS})
-    target_link_libraries (${PROJECT_NAME} mstch::mstch)
-#endif (MSTCH_FOUND)
+include_directories(${MSTCH_INCLUDE_DIRS})
+target_link_libraries (${PROJECT_NAME} mstch::mstch)
 
 # for mongocxx
 find_package (libmongocxx)
-#if (LIBMONGOCXX_FOUND)
-    include_directories(${LIBMONGOCXX_INCLUDE_DIRS})
-    target_link_libraries(${PROJECT_NAME} ${LIBMONGOCXX_LIBRARIES})
-    #endif (LIBMONGOCXX_FOUND)
+include_directories(${LIBMONGOCXX_INCLUDE_DIRS})
+target_link_libraries(${PROJECT_NAME} ${LIBMONGOCXX_LIBRARIES})
 find_package (libbsoncxx)
-#if (LIBBSONCXX_FOUND)
-    include_directories(${LIBBSONCXX_INCLUDE_DIRS})
-    target_link_libraries(${PROJECT_NAME} ${LIBBSONCXX_LIBRARIES})
-    #endif (LIBBSONCXX_FOUND)
+include_directories(${LIBBSONCXX_INCLUDE_DIRS})
+target_link_libraries(${PROJECT_NAME} ${LIBBSONCXX_LIBRARIES})
+
+# for socketio
+find_library(SOCKETIO_LIBRARY sioclient HINTS ${BASE_PATH}/third_party/socket.io-client-cpp)
+include_directories(${BASE_PATH}third_party/socket.io-client-cpp/build/include)
+target_link_libraries(${PROJECT_NAME} ${SOCKETIO_LIBRARY})
+
+# for boost
+find_package(Boost 1.48.0 COMPONENTS system thread)
+include_directories(${BOOST_INCLUDE_DIRS})
+target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES})
 
 # test
 if (test)
