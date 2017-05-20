@@ -14,10 +14,6 @@ add_definitions(-std=c++14)
 option(test "Build all tests." OFF) # Makes boolean 'test' available.
 set(CMAKE_CXX_FLAGS "-g -Wall")
 
-# for mstch
-add_subdirectory(third_party/mstch)
-include_directories(${mstch_INCLUDE_DIR})
-
 # normal 
 # include
 include_directories(
@@ -27,13 +23,32 @@ include_directories(
 
 # add executable
 set (${PROJECT_NAME}_SRC
-    ${BASE_PATH}src/front.cpp
+    ${BASE_PATH}src/main.cpp
 )
+
 # generate project as a lib, so we can reuse it when testing
 add_library(${PROJECT_NAME}_lib ${${PROJECT_NAME}_SRC})
 add_executable (${PROJECT_NAME} ${BASE_PATH}src/main.cpp)
 target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}_lib)
-target_link_libraries(${PROJECT_NAME} mstch)
+
+# for mstch
+find_package (mstch)
+#if (MSTCH_FOUND)
+    include_directories(${MSTCH_INCLUDE_DIRS})
+    target_link_libraries (${PROJECT_NAME} mstch::mstch)
+#endif (MSTCH_FOUND)
+
+# for mongocxx
+find_package (libmongocxx)
+#if (LIBMONGOCXX_FOUND)
+    include_directories(${LIBMONGOCXX_INCLUDE_DIRS})
+    target_link_libraries(${PROJECT_NAME} ${LIBMONGOCXX_LIBRARIES})
+    #endif (LIBMONGOCXX_FOUND)
+find_package (libbsoncxx)
+#if (LIBBSONCXX_FOUND)
+    include_directories(${LIBBSONCXX_INCLUDE_DIRS})
+    target_link_libraries(${PROJECT_NAME} ${LIBBSONCXX_LIBRARIES})
+    #endif (LIBBSONCXX_FOUND)
 
 # test
 if (test)
