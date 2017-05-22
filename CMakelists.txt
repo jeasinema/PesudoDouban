@@ -19,16 +19,19 @@ set(CMAKE_CXX_FLAGS "-g -Wall")
 include_directories(
     ${BASE_PATH}
     ${BASE_PATH}include
+    ${BASE_PATH}front_end
 )
 
 # add executable
 set (${PROJECT_NAME}_SRC
-    ${BASE_PATH}src/main.cpp
+    ${BASE_PATH}front_end/viewer/base_render.cpp
+    ${BASE_PATH}front_end/db_parser/movie_db.cpp
+    ${BASE_PATH}front_end/back_end/backend.cpp
 )
 
 # generate project as a lib, so we can reuse it when testing
 add_library(${PROJECT_NAME}_lib ${${PROJECT_NAME}_SRC})
-add_executable (${PROJECT_NAME} ${BASE_PATH}src/main.cpp)
+add_executable (${PROJECT_NAME} ./front_end/test/main.cpp)
 target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}_lib)
 
 # for mstch

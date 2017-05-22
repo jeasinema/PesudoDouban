@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Persudo Douban</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/shop-item.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Persudo Douban</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <!--div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div-->
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">关注电影的一切</a>
+                    </li>
+                </ul>
+                <form class="navbar-form pull-right" role="search" style="position: relative; left: 0px;">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="影视剧名">
+                  </div>
+                  <button type="submit" class="btn btn-black">Go!</button>
+                </form>
+            </div>
+        </div>
+
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <p class="lead">信息类别</p>
+                <div class="list-group">
+                    <a href="{{basic_info_url}}" class="list-group-item active">基本信息</a>
+                    <a href="{{actor_info_url}}" class="list-group-item">演职员信息</a>
+                    <a href="{{relate_info_url}}" class="list-group-item">相关作品</a>
+                </div>
+            </div>
+
+            {{#is_basic_info}}
+            <div class="col-md-9">
+
+                <div class="thumbnail">
+                    <img class="img-responsive" src="{{movie_poster_url}}" alt="">
+                    <div class="caption-full">
+                        <h4 class="pull-right">{{movie_date}}</h4>
+                        <h3><strong>{{movie_name}}</strong></h3>
+                        <span class="glyphicon glyphicon-tags"></span> 
+                        {{#movie_classes}}
+                        <b>{{movie_class}}</b>
+                        {{/movie_classes}}
+                        <span class="glyphicon glyphicon-info-sign"></span> 
+                        <b>{{movie_level}}</b>
+            
+                        <p>{{movie_detail}}</p>
+                    </div>
+                    <div class="ratings">
+                        <p class="pull-right">{{movie_time}}</p>
+                        <p>
+                        {{movie_rate}}
+                            <!--span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                            4.0 stars-->
+                        </p>
+                    </div>
+                </div>
+
+                <div class="well">
+
+                    <div class="text-right">
+                        <a class="btn btn-success">Leave a Review</a>
+                    </div>
+
+                    <hr>
+
+                    {{#movie_critic}}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!--span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span-->
+                            {{critic_user_name}}
+                            <span class="pull-right">{{critic_date}}</span>
+                            <p>{{critic_detail}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    {{/movie_critic}}
+                </div>
+
+            </div>
+            {{/is_basic_info}}
+
+            {{#is_actor_info}}
+            <div class="col-md-9">
+                <h3>导演</h3>
+                <hr>
+                    <div class="row">
+                        <div class="col-sm-4 col-lg-4 col-md-4">
+                            <div class="thumbnail">
+                                <img src="{{director_image_url}}" alt="">
+                                <div class="caption">
+                                    <h4 class="pull-left">{{director_name}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                <h3>编剧</h3>
+                <hr>
+                    <div class="row">
+                        <div class="col-sm-4 col-lg-4 col-md-4">
+                            <div class="thumbnail">
+                                <img src="{{write_image_url}}" alt="">
+                                <div class="caption">
+                                    <h4 class="pull-left">{{write_name}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                <h3>主演</h3>
+                <hr>
+                    <div class="row">
+                        <div class="col-sm-4 col-lg-4 col-md-4">
+                            {{#actors}}
+                            <div class="thumbnail">
+                                <img src="{{actor_image_url}}" alt="">
+                                <div class="caption">
+                                    <h4 class="pull-left">{{actor_name}}</h4>
+                                </div>
+                            </div>
+                            {{/actors}}
+                        </div>
+                    </div>
+            </div>
+            {{/is_actor_info}}
+
+            {{#is_relate_info}}
+            <div class="col-md-9">
+                {{#no_movie}}
+                <div class="alert alert-warning" role="alert">抱歉, 没找到相关信息!</div>
+                {{/no_movie}}
+                {{#movies}}
+                <div class="row">
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="{{movie_poster_url}}" alt="">
+                            <div class="caption">
+                                <h4 class="pull-right">{{movie_date}}</h4>
+                                <h4><a href="#">{{movie_name}}</a>
+                                </h4>
+                                <span class="glyphicon glyphicon-tags"></span> 
+                                {{#movie_classes}}
+                                <b>{{movie_class}}</b>
+                                {{/movie_classes}}
+                                <span class="glyphicon glyphicon-user"></span>
+                                {{#movie_stars}}
+                                <b>{{movie_star_name}}</b>
+                                {{/movie_stars}}
+                                <p>{{movie_abstract}}</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">{{movie_time}}</p>
+                                <p>
+                                {{movie_rate}}
+                                </p>
+                                <!--p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                </p-->
+                            </div>
+                        </div>
+                    </div>
+                    {{/movies}}
+                </div>
+                {{/is_relate_info}}
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <div class="container">
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Persudo Douban 2017</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

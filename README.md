@@ -1,6 +1,13 @@
 ### PesudoDouban
 To build a douban-like web app.
 
+#### Dependency
+- mongodb
+- mongocxx
+- mstch
+If you are using macOS, all of these above can be directly installed by `Homebrew`.
+
+
 #### Build
 ```bash
 $ mkdir build; cd build

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Persudo Douban</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/shop-homepage.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Persudo Douban</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <!--div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div-->
+            <!-- /.navbar-collapse -->
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">关注电影的一切</a>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left pull-right" role="search" style="position: relative; left: 0px;">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="影视剧名">
+                  </div>
+                  <button type="submit" class="btn btn-black">Go!</button>
+                </form>
+            </div>
+            <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <p class="lead">Category</p>
+                <div class="list-group">
+                    <a href="{{china_movie_url}}" class="list-group-item">华语新片速递</a>
+                    <a href="{{us_movie_url}}" class="list-group-item">欧美大片前瞻</a>
+                    <a href="{{japan_movie_url}}" class="list-group-item">日韩电影集锦</a>
+                    <!--a href="#" class="list-group-item">Today's </a-->
+                </div>
+            </div>
+
+            <div class="col-md-9">
+
+                <div class="row carousel-holder">
+
+                    <!--div class="col-md-12">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div-->
+                {{#no_movie}}
+                <div class="alert alert-warning" role="alert">抱歉, 今天没有值得推荐的电影!</div>
+                {{/no_movie}}
+                {{#movies}}
+                <div class="row">
+
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="{{movie_poster_url}}" alt="">
+                            <div class="caption">
+                                <h4 class="pull-right">{{movie_date}}</h4>
+                                <h4><a href="{{movie_name_url}}">{{movie_name}}</a>
+                                </h4>
+                                <span class="glyphicon glyphicon-tags"></span> 
+                                {{#movie_classes}}
+                                <b>{{movie_class}}</b>
+                                {{/movie_classes}}
+                                <span class="glyphicon glyphicon-user"></span>
+                                {{#movie_stars}}
+                                <b>{{movie_star_name}}</b>
+                                {{/movie_stars}}
+                                <p>{{movie_abstract}}</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">{{movie_time}}</p>
+                                <p>
+                                {{movie_rate}}
+                                </p>
+                                <!--p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                </p-->
+                            </div>
+                        </div>
+                    </div>
+                    {{/movies}}
+
+               
+                    <!--div class="col-sm-4 col-lg-4 col-md-4">
+                        <h4><a href="#">Like this template?</a>
+                        </h4>
+                        <p>If you like this template, then check out <a target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this tutorial</a> on how to build a working review system for your online store!</p>
+                        <a class="btn btn-primary" target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">View Tutorial</a>
+                    </div-->
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <div class="container">
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Persudo Douban 2017</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
