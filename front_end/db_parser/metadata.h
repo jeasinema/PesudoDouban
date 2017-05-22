@@ -2,7 +2,7 @@
  File Name : metadata.h
  Purpose :
  Creation Date : 21-05-2017
- Last Modified : Mon May 22 12:18:06 2017
+ Last Modified : Mon May 22 17:39:15 2017
  Created By : Jeasine Ma [jeasinema[at]gmail[dot]com]
 -----------------------------------------------------*/
 #ifndef METADATA_H
@@ -22,10 +22,7 @@ using std::map;
 using std::shared_ptr;
 using std::weak_ptr;
 
-class MetaData {
-public:
-    inline virtual void foo() {};
-};
+class MetaData {};
 
 struct MovieCritic {
     string user_name;

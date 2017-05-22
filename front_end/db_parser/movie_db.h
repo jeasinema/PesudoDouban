@@ -2,7 +2,7 @@
  File Name : movie_db.h
  Purpose :
  Creation Date : 22-05-2017
- Last Modified : Mon May 22 15:46:03 2017
+ Last Modified : Mon May 22 16:56:53 2017
  Created By : Jeasine Ma [jeasinema[at]gmail[dot]com]
 -----------------------------------------------------*/
 #ifndef MOVIE_DB_H
@@ -90,6 +90,7 @@ public:
 
     // ret value do not extract relate movie infos
     shared_ptr<MovieData> get_movie_data(const string& movie_name);
+    vector<string> get_movie_today(const string& region);
     vector<string> search_movie(const string& movie_name);
 };
 

@@ -2,7 +2,7 @@
  File Name : backend.cpp
  Purpose :
  Creation Date : 22-05-2017
- Last Modified : Mon May 22 16:16:56 2017
+ Last Modified : Mon May 22 20:22:41 2017
  Created By : Jeasine Ma [jeasinema[at]gmail[dot]com]
 -----------------------------------------------------*/
 #include <string>
@@ -21,6 +21,8 @@
 namespace persudo {
 namespace backend {
 
+using db_parser::PersudoData;
+
 int PersudoBackend::register_all() {
     int ret = 0;
     client.set_open_listener([&]() {
@@ -28,30 +30,35 @@ int PersudoBackend::register_all() {
 
         s->on(this->index_site.get_recv_event_name(), sio::socket::event_listener_aux([s, this](string const& name, sio::message::ptr const& data,
                 bool isAck, sio::message::list &ack_resp) {
+            this->index_site.recv_server_data = data; // get it from server 
             sio::message::ptr p = sio::binary_message::create(this->index_site.get_website());
             s->emit(this->index_site.get_send_event_name(), p);
         }));
 
         s->on(this->search_site.get_recv_event_name(), sio::socket::event_listener_aux([s, this](string const& name, sio::message::ptr const& data,
                 bool isAck, sio::message::list &ack_resp) {
+            this->index_site.recv_server_data = data; // get it from server 
             sio::message::ptr p = sio::binary_message::create(this->search_site.get_website());
             s->emit(this->search_site.get_send_event_name(), p);
         }));
 
         s->on(this->movie_info_site.get_recv_event_name(), sio::socket::event_listener_aux([s, this](string const& name, sio::message::ptr const& data,
                 bool isAck, sio::message::list &ack_resp) {
+            this->index_site.recv_server_data = data; // get it from server 
             sio::message::ptr p = sio::binary_message::create(this->movie_info_site.get_website());
             s->emit(this->movie_info_site.get_send_event_name(), p);
         }));
 
         s->on(this->actor_info_site.get_recv_event_name(), sio::socket::event_listener_aux([s, this](string const& name, sio::message::ptr const& data,
                 bool isAck, sio::message::list &ack_resp) {
+            this->index_site.recv_server_data = data; // get it from server 
             sio::message::ptr p = sio::binary_message::create(this->actor_info_site.get_website());
             s->emit(this->actor_info_site.get_send_event_name(), p);
         }));
 
         s->on(this->relate_info_site.get_recv_event_name(), sio::socket::event_listener_aux([s, this](string const& name, sio::message::ptr const& data,
                 bool isAck, sio::message::list &ack_resp) {
+            this->index_site.recv_server_data = data; // get it from server 
             sio::message::ptr p = sio::binary_message::create(this->relate_info_site.get_website());
             s->emit(this->relate_info_site.get_send_event_name(), p);
         }));
@@ -95,7 +102,17 @@ IndexSite::IndexSite()
 }
 
 shared_ptr<string> IndexSite::get_website() {
-    return std::make_shared<string>();
+    string region = recv_server_data->get_map().at("region")->get_string();
+    auto db = std::static_pointer_cast<MovieDB>(this->db);
+    auto movies = db->get_movie_today(region);
+    
+    auto metadata = std::make_shared<PersudoData>();
+    for (auto& i : movies) {
+        auto movie = db->get_movie_data(i);
+        metadata->movie_data.push_back(movie);
+    }
+
+    return this->render->render(metadata);
 }
 
 SearchSite::SearchSite() 
@@ -110,7 +127,17 @@ SearchSite::SearchSite()
 }
 
 shared_ptr<string> SearchSite::get_website() {
-    return std::make_shared<string>();
+    string keyword = recv_server_data->get_map().at("keyword")->get_string();
+    auto db = std::static_pointer_cast<MovieDB>(this->db);
+    auto movies = db->search_movie(keyword);
+
+    auto metadata = std::make_shared<PersudoData>();
+    for (auto& i : movies) {
+        auto movie = db->get_movie_data(i);
+        metadata->movie_data.push_back(movie);
+    }
+
+    return this->render->render(metadata);
 }
 
 MovieInfoSite::MovieInfoSite() 
@@ -125,7 +152,14 @@ MovieInfoSite::MovieInfoSite()
 }
 
 shared_ptr<string> MovieInfoSite::get_website() {
-    return std::make_shared<string>();
+    string movie_name = recv_server_data->get_map().at("movie")->get_string();
+    auto db = std::static_pointer_cast<MovieDB>(this->db);
+    auto movie = db->get_movie_data(movie_name);
+
+    auto metadata = std::make_shared<PersudoData>();
+    metadata->movie_data.push_back(movie);
+
+    return this->render->render(metadata);
 }
 
 ActorInfoSite::ActorInfoSite() 
@@ -140,7 +174,14 @@ ActorInfoSite::ActorInfoSite()
 }
 
 shared_ptr<string> ActorInfoSite::get_website() {
-    return std::make_shared<string>();
+    string movie_name = recv_server_data->get_map().at("movie")->get_string();
+    auto db = std::static_pointer_cast<MovieDB>(this->db);
+    auto movie = db->get_movie_data(movie_name);
+
+    auto metadata = std::make_shared<PersudoData>();
+    metadata->movie_data.push_back(movie);
+
+    return this->render->render(metadata);
 }
 
 RelateInfoSite::RelateInfoSite() 
@@ -155,7 +196,14 @@ RelateInfoSite::RelateInfoSite()
 }
 
 shared_ptr<string> RelateInfoSite::get_website() {
-    return std::make_shared<string>();
+    string movie_name = recv_server_data->get_map().at("movie")->get_string();
+    auto db = std::static_pointer_cast<MovieDB>(this->db);
+    auto movie = db->get_movie_data(movie_name);
+
+    auto metadata = std::make_shared<PersudoData>();
+    metadata->movie_data.push_back(movie);
+
+    return this->render->render(metadata);
 }
 
 }

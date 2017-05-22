@@ -2,7 +2,7 @@
  File Name : backend.h
  Purpose :
  Creation Date : 22-05-2017
- Last Modified : Mon May 22 16:17:31 2017
+ Last Modified : Mon May 22 17:20:39 2017
  Created By : Jeasine Ma [jeasinema[at]gmail[dot]com]
 -----------------------------------------------------*/
 #ifndef BACKEND_H
@@ -31,6 +31,8 @@ using std::shared_ptr;
 
 using db_parser::BaseDB;
 using db_parser::MovieDB;
+using db_parser::MetaData;
+using db_parser::MovieData;
 using viewer::BaseRender;
 using viewer::IndexRender;
 using viewer::SearchRender;
@@ -52,6 +54,7 @@ public:
         : db(db), render(render) {}
     ~BaseSite() = default;
 
+    sio::message::ptr recv_server_data; // get it from server 
     string get_recv_event_name() { return recv_event_name; }
     string get_send_event_name() { return send_event_name; }
     // for this stupid demand. just return the whole static site

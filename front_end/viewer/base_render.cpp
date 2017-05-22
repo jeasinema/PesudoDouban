@@ -2,7 +2,7 @@
  File Name : base_rander.cpp
  Purpose :
  Creation Date : 21-05-2017
- Last Modified : Mon May 22 12:17:10 2017
+ Last Modified : Mon May 22 20:00:50 2017
  Created By : Jeasine Ma [jeasinema[at]gmail[dot]com]
 -----------------------------------------------------*/
 #include <fstream>
@@ -39,7 +39,7 @@ int BaseRender::load_template(const string& template_path) {
 }
 
 shared_ptr<string> IndexRender::render(shared_ptr<MetaData> _data_) {
-    auto data = std::dynamic_pointer_cast<PersudoData>(_data_);
+    auto data = std::static_pointer_cast<PersudoData>(_data_);
     bool no_movie = (data->movie_data.size() == 0);
     mstch::map context{
         { "no_movie", no_movie },
@@ -53,7 +53,7 @@ shared_ptr<string> IndexRender::render(shared_ptr<MetaData> _data_) {
 }
 
 shared_ptr<string> SearchRender::render(shared_ptr<MetaData> _data_) {
-    auto data = std::dynamic_pointer_cast<PersudoData>(_data_);
+    auto data = std::static_pointer_cast<PersudoData>(_data_);
     int search_amount = data->movie_data.size();
     mstch::map context{
         { "search_amount", search_amount },
@@ -64,7 +64,7 @@ shared_ptr<string> SearchRender::render(shared_ptr<MetaData> _data_) {
 }
 
 shared_ptr<string> MovieInfoRender::render(shared_ptr<MetaData> _data_) {
-    auto data = std::dynamic_pointer_cast<PersudoData>(_data_);
+    auto data = std::static_pointer_cast<PersudoData>(_data_);
     if (data->movie_data.size() == 0) std::cerr << "movie_data size is 0!" << std::endl;
     mstch::map context{
         { "basic_info_url", this->_url_.basic_info_url },
@@ -85,11 +85,13 @@ shared_ptr<string> MovieInfoRender::render(shared_ptr<MetaData> _data_) {
         { "movie_critic", extract_movie_critic(data->movie_data[0]) }
     };
     auto ret = std::make_shared<string>(mstch::render(*this->base_template, context));
+
+using db_parser::PersudoData;
     return ret;
 }
 
 shared_ptr<string> ActorInfoRender::render(shared_ptr<MetaData> _data_) {
-    auto data = std::dynamic_pointer_cast<PersudoData>(_data_);
+    auto data = std::static_pointer_cast<PersudoData>(_data_);
     if (data->movie_data.size() == 0) std::cerr << "movie_data size is 0!" << std::endl;
     mstch::map context{
         { "basic_info_url", this->_url_.basic_info_url },
@@ -112,7 +114,7 @@ shared_ptr<string> ActorInfoRender::render(shared_ptr<MetaData> _data_) {
 }
 
 shared_ptr<string> RelateInfoRender::render(shared_ptr<MetaData> _data_) {
-    auto data = std::dynamic_pointer_cast<PersudoData>(_data_);
+    auto data = std::static_pointer_cast<PersudoData>(_data_);
     if (data->movie_data.size() == 0) std::cerr << "movie_data size is 0!" << std::endl;
     bool no_movie = (data->movie_data[0]->movie_relate.size() == 0);
     mstch::map context{
@@ -128,7 +130,6 @@ shared_ptr<string> RelateInfoRender::render(shared_ptr<MetaData> _data_) {
     auto ret = std::make_shared<string>(mstch::render(*this->base_template, context));
     return ret;
 }
-
 
 }
 }
