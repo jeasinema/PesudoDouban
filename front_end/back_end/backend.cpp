@@ -2,7 +2,7 @@
  File Name : backend.cpp
  Purpose :
  Creation Date : 22-05-2017
- Last Modified : Mon May 22 20:22:41 2017
+ Last Modified : Wed May 24 16:41:18 2017
  Created By : Jeasine Ma [jeasinema[at]gmail[dot]com]
 -----------------------------------------------------*/
 #include <string>
@@ -97,7 +97,7 @@ IndexSite::IndexSite()
     this->recv_event_name = "server_get_index";
     this->send_event_name = "cpp_send_index";
     this->db_name = "movie_db";
-    this->render = std::make_shared<IndexRender>();
+    this->render = std::make_shared<IndexRender>("../front_end/web_server/views/static/index.html");
     this->db = std::make_shared<MovieDB>(this->db_name);
 }
 
@@ -122,7 +122,7 @@ SearchSite::SearchSite()
     this->recv_event_name = "server_get_search";
     this->send_event_name = "cpp_send_search";
     this->db_name = "movie_db";
-    this->render = std::make_shared<IndexRender>();
+    this->render = std::make_shared<SearchRender>("../front_end/web_server/views/static/search.html");
     this->db = std::make_shared<MovieDB>(this->db_name);
 }
 
@@ -147,7 +147,7 @@ MovieInfoSite::MovieInfoSite()
     this->recv_event_name = "server_get_movieinfo";
     this->send_event_name = "cpp_send_movieinfo";
     this->db_name = "movie_db";
-    this->render = std::make_shared<IndexRender>();
+    this->render = std::make_shared<MovieInfoRender>("../front_end/web_server/views/static/detail.html");
     this->db = std::make_shared<MovieDB>(this->db_name);
 }
 
@@ -169,7 +169,7 @@ ActorInfoSite::ActorInfoSite()
     this->recv_event_name = "server_get_actorinfo";
     this->send_event_name = "cpp_send_actorinfo";
     this->db_name = "movie_db";
-    this->render = std::make_shared<IndexRender>();
+    this->render = std::make_shared<ActorInfoRender>("../front_end/web_server/views/static/detail.html");
     this->db = std::make_shared<MovieDB>(this->db_name);
 }
 
@@ -191,7 +191,7 @@ RelateInfoSite::RelateInfoSite()
     this->recv_event_name = "server_get_relateinfo";
     this->send_event_name = "cpp_send_relateinfo";
     this->db_name = "movie_db";
-    this->render = std::make_shared<IndexRender>();
+    this->render = std::make_shared<RelateInfoRender>("../front_end/web_server/views/static/detail.html");
     this->db = std::make_shared<MovieDB>(this->db_name);
 }
 

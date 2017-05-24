@@ -2,7 +2,7 @@
  File Name :
  Purpose :
  Creation Date : 21-05-2017
- Last Modified : Mon May 22 15:07:03 2017
+ Last Modified : Wed May 24 16:41:38 2017
  Created By : Jeasine Ma [jeasinema[at]gmail[dot]com]
 -----------------------------------------------------*/
 #ifndef BASE_RENDER_H
@@ -76,26 +76,31 @@ protected:
 
 class IndexRender : public PersudoRender {
 public:
+    IndexRender(const string& template_path) { load_template(template_path); }
     shared_ptr<string> render(shared_ptr<MetaData> _data_);
 };
 
 class SearchRender : public PersudoRender {
 public:
+    SearchRender(const string& template_path) { load_template(template_path); }
     shared_ptr<string> render(shared_ptr<MetaData> _data_);
 };
 
 class MovieInfoRender : public PersudoRender {
 public:
+    MovieInfoRender(const string& template_path) { load_template(template_path); }
     shared_ptr<string> render(shared_ptr<MetaData> _data_);
 };
 
 class ActorInfoRender : public PersudoRender {
 public:
+    ActorInfoRender(const string& template_path) { load_template(template_path); }
     shared_ptr<string> render(shared_ptr<MetaData> _data_);
 };
 
 class RelateInfoRender : public PersudoRender {
 public:
+    RelateInfoRender(const string& template_path) { load_template(template_path); }
     shared_ptr<string> render(shared_ptr<MetaData> _data_);
 };
 

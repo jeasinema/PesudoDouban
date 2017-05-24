@@ -1,59 +1,59 @@
-const router = require('koa-router')()
+const router = require('koa-router')();
+const server = require('../server');
+const waitEvents = require('wait-events');
+
+router.prefix('/index');
 
 router.get('/', async (ctx, next) => {
-  await ctx.render('index', {
-    title: 'Hello Koa 2!'
-  })
-})
+    console.log("get /");
+    if (server.cpp_socket) {
+        console.log("cpp_socket exist");
+        server.cpp_socket.emit("server_get_index", {
+            region : 'china'
+        });
+        let ret = await waitEvents(server.cpp_socket, ['cpp_send_index'], ['err']);
+        console.log("Recv cpp_send_index china");
+        ctx.response.body = ret;
+    }
+});
 
-router.get('/string', async (ctx, next) => {
- // ctx.body = '<b>koa2 string</b><script src="/socket.io/socket.io.js"></script><script>var socket = io();</script>'
-    ctx.body = `<!doctype html>
-<html>
-  <head>
-    <title>Socket.IO chat</title>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-    </style>
-  </head>
-  <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
-  </body>
-<script src="/socket.io/socket.io.js"></script>
-<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-<script>
-  $(function () {
-    var socket = io();
-    socket.emit('web_client',true);
-    $('form').submit(function(){
-      socket.emit('web_get_page', $('#m').val());
-      $.post('string', {m : $('#m').val()}, (data) => {
-        $('#m').val(data);
-        console.log(data);
-      });
-      $('#m').val('');
-      return false;
-    });
-  });
-</script>
-</html>`;
-})
+router.get('/china', async (ctx, next) => {
+    console.log("get /");
+    if (server.cpp_socket) {
+        console.log("cpp_socket exist");
+        server.cpp_socket.emit("server_get_index", {
+            region : 'china'
+        });
+        let ret = await waitEvents(server.cpp_socket, ['cpp_send_index'], ['err']);
+        console.log("Recv cpp_send_index china");
+        ctx.response.body = ret;
+    }
+});
 
+router.get('/us', async (ctx, next) => {
+    console.log("get /");
+    if (server.cpp_socket) {
+        console.log("cpp_socket exist");
+        server.cpp_socket.emit("server_get_index", {
+            region : 'us'
+        });
+        let ret = await waitEvents(server.cpp_socket, ['cpp_send_index'], ['err']);
+        console.log("Recv cpp_send_index us");
+        ctx.response.body = ret;
+    }
+});
 
-router.get('/json', async (ctx, next) => {
-  ctx.body = {
-    title: 'koa2 json'
-  }
-})
+router.get('/japan', async (ctx, next) => {
+    console.log("get /");
+    if (server.cpp_socket) {
+        console.log("cpp_socket exist");
+        server.cpp_socket.emit("server_get_index", {
+            region : 'japan'
+        });
+        let ret = await waitEvents(server.cpp_socket, ['cpp_send_index'], ['err']);
+        console.log("Recv cpp_send_index japan");
+        ctx.response.body = ret;
+    }
+});
 
 module.exports = router
