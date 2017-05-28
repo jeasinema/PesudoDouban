@@ -2,7 +2,7 @@
  File Name :
  Purpose :
  Creation Date : 22-05-2017
- Last Modified : Sun May 28 18:11:26 2017
+ Last Modified : Sun May 28 19:57:48 2017
  Created By : Jeasine Ma [jeasinema[at]gmail[dot]com]
 -----------------------------------------------------*/
 #include "rapidjson/document.h"
@@ -12,6 +12,9 @@
 
 namespace persudo {
 namespace db_parser {
+
+shared_ptr<mongocxx::instance> DBConn::db_instance = nullptr;
+unordered_map<string, shared_ptr<mongocxx::client>> DBConn::connected_cli = {{"", nullptr}};
 
 shared_ptr<MovieData> MovieDB::get_movie_data(const string& movie_name, bool with_relate) {
     mongocxx::collection coll = (this->db)[movie_coll_name];

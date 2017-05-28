@@ -2,7 +2,7 @@
  File Name :
  Purpose :
  Creation Date : 21-05-2017
- Last Modified : Wed May 24 16:41:38 2017
+ Last Modified : Sun May 28 19:59:03 2017
  Created By : Jeasine Ma [jeasinema[at]gmail[dot]com]
 -----------------------------------------------------*/
 #ifndef BASE_RENDER_H
@@ -104,7 +104,7 @@ public:
     shared_ptr<string> render(shared_ptr<MetaData> _data_);
 };
 
-mstch::array PersudoRender::extract_movie_star_name(shared_ptr<MovieData> data) {
+inline mstch::array PersudoRender::extract_movie_star_name(shared_ptr<MovieData> data) {
     mstch::array ret;
     for (auto& i : data->movie_star) {
         mstch::map element{
@@ -115,7 +115,7 @@ mstch::array PersudoRender::extract_movie_star_name(shared_ptr<MovieData> data) 
     return ret;
 }
 
-mstch::array PersudoRender::extract_movie_class(shared_ptr<MovieData> data) {
+inline mstch::array PersudoRender::extract_movie_class(shared_ptr<MovieData> data) {
     mstch::array ret;
     for (auto& i : data->movie_class) {
         mstch::map element{
@@ -126,7 +126,7 @@ mstch::array PersudoRender::extract_movie_class(shared_ptr<MovieData> data) {
     return ret;
 }
 
-mstch::array PersudoRender::extract_movie_critic(shared_ptr<MovieData> data) {
+inline mstch::array PersudoRender::extract_movie_critic(shared_ptr<MovieData> data) {
     mstch::array ret;
     for (auto& i : data->movie_critic) {
         mstch::map element{
@@ -139,7 +139,7 @@ mstch::array PersudoRender::extract_movie_critic(shared_ptr<MovieData> data) {
     return ret;
 }
 
-mstch::array PersudoRender::extract_actor_info(shared_ptr<MovieData> data) {
+inline mstch::array PersudoRender::extract_actor_info(shared_ptr<MovieData> data) {
     mstch::array ret;
     for (auto& i : data->movie_star) {
         mstch::map element{
@@ -152,7 +152,7 @@ mstch::array PersudoRender::extract_actor_info(shared_ptr<MovieData> data) {
     return ret;
 }
 
-mstch::array PersudoRender::extract_movie_info(shared_ptr<PersudoData> data) {
+inline mstch::array PersudoRender::extract_movie_info(shared_ptr<PersudoData> data) {
     mstch::array ret;
     if (data->movie_data.size() != 0) {  // empty list == false
         for (auto& i : data->movie_data) {
