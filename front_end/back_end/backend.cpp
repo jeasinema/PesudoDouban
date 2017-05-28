@@ -2,7 +2,7 @@
  File Name : backend.cpp
  Purpose :
  Creation Date : 22-05-2017
- Last Modified : Wed May 24 16:41:18 2017
+ Last Modified : Sun May 28 16:25:59 2017
  Created By : Jeasine Ma [jeasinema[at]gmail[dot]com]
 -----------------------------------------------------*/
 #include <string>
@@ -108,7 +108,7 @@ shared_ptr<string> IndexSite::get_website() {
     
     auto metadata = std::make_shared<PersudoData>();
     for (auto& i : movies) {
-        auto movie = db->get_movie_data(i);
+        auto movie = db->get_movie_data(i, false);
         metadata->movie_data.push_back(movie);
     }
 
@@ -133,7 +133,7 @@ shared_ptr<string> SearchSite::get_website() {
 
     auto metadata = std::make_shared<PersudoData>();
     for (auto& i : movies) {
-        auto movie = db->get_movie_data(i);
+        auto movie = db->get_movie_data(i, false);
         metadata->movie_data.push_back(movie);
     }
 
@@ -154,7 +154,7 @@ MovieInfoSite::MovieInfoSite()
 shared_ptr<string> MovieInfoSite::get_website() {
     string movie_name = recv_server_data->get_map().at("movie")->get_string();
     auto db = std::static_pointer_cast<MovieDB>(this->db);
-    auto movie = db->get_movie_data(movie_name);
+    auto movie = db->get_movie_data(movie_name, false);
 
     auto metadata = std::make_shared<PersudoData>();
     metadata->movie_data.push_back(movie);
@@ -176,7 +176,7 @@ ActorInfoSite::ActorInfoSite()
 shared_ptr<string> ActorInfoSite::get_website() {
     string movie_name = recv_server_data->get_map().at("movie")->get_string();
     auto db = std::static_pointer_cast<MovieDB>(this->db);
-    auto movie = db->get_movie_data(movie_name);
+    auto movie = db->get_movie_data(movie_name, false);
 
     auto metadata = std::make_shared<PersudoData>();
     metadata->movie_data.push_back(movie);
@@ -198,7 +198,7 @@ RelateInfoSite::RelateInfoSite()
 shared_ptr<string> RelateInfoSite::get_website() {
     string movie_name = recv_server_data->get_map().at("movie")->get_string();
     auto db = std::static_pointer_cast<MovieDB>(this->db);
-    auto movie = db->get_movie_data(movie_name);
+    auto movie = db->get_movie_data(movie_name, true);
 
     auto metadata = std::make_shared<PersudoData>();
     metadata->movie_data.push_back(movie);

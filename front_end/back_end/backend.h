@@ -2,7 +2,7 @@
  File Name : backend.h
  Purpose :
  Creation Date : 22-05-2017
- Last Modified : Mon May 22 17:20:39 2017
+ Last Modified : Sun May 28 10:39:37 2017
  Created By : Jeasine Ma [jeasinema[at]gmail[dot]com]
 -----------------------------------------------------*/
 #ifndef BACKEND_H
@@ -46,8 +46,8 @@ protected:
     string recv_event_name;
     string send_event_name;
     string db_name;
-    shared_ptr<BaseDB> db;
-    shared_ptr<BaseRender> render;
+    shared_ptr<BaseDB> db = nullptr;
+    shared_ptr<BaseRender> render = nullptr;
 public:
     BaseSite() = default;
     BaseSite(shared_ptr<BaseDB> db, shared_ptr<BaseRender> render)

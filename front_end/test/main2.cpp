@@ -1,27 +1,28 @@
-// Copyright 2015 MongoDB Inc.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/*-----------------------------------------------------
+ File Name : main.cpp
+ Purpose :
+ Creation Date : 20-05-2017
+ Last Modified : Sun May 28 16:49:25 2017
+ Created By : Jeasine Ma [jeasinema[at]gmail[dot]com]
+-----------------------------------------------------*/
+#include <iostream>
+#include <string>
+#include <mstch/mstch.hpp>
+
+#include "sio_client.h"
+#include "sio_socket.h"
+
+using namespace std;
+using namespace sio;
 
 #include <cstdlib>
-#include <iostream>
-
-#include "rapidjson/document.h"
 
 #include <bsoncxx/builder/stream/array.hpp>
 #include <bsoncxx/builder/stream/document.hpp>
 #include <bsoncxx/builder/stream/helpers.hpp>
 #include <bsoncxx/config/prelude.hpp>
 #include <bsoncxx/types.hpp>
+
 
 #include <bsoncxx/array/view.hpp>
 #include <bsoncxx/array/view.hpp>
@@ -35,12 +36,38 @@
 #include <bsoncxx/types.hpp>
 #include <bsoncxx/types/value.hpp>
 
+
 using namespace bsoncxx;
 
-int main(int, char**) {
+int main(int argc, char **argv) {
+    //sio::client h;
+
+    //h.set_open_listener([&]() {
+    //    sio::socket::ptr s = h.socket();
+    //    
+    //    sio::message::ptr p = sio::bool_message::create(true);
+    //    s->emit("cpp_client", p);
+    //    std::cout << "emit a cpp_client" << std::endl;
+
+    //    s->on("server_get_page", sio::socket::event_listener_aux([s](string const& name, message::ptr const& data,
+    //                    bool isAck,message::list &ack_resp) {
+    //        string s1 = data->get_string();
+    //        cout << "recv:" << s1 << endl;
+    //        std::string view{"{{#names}}Hi {{name}}!\n{{/names}}"};
+    //        mstch::map context{
+    //            {"names",  mstch::array{
+    //                mstch::map{{"name", std::string{s1}}}
+    //            }}
+    //        };
+    //        sio::message::ptr p = sio::string_message::create(string(mstch::render(view, context)));
+    //        s->emit("cpp_push_page", p);
+    //    }));
+    //});
+
+    //h.connect("http://127.0.0.1:8088");
     using namespace builder::stream;
 
-    builder::stream::document build_doc;
+    auto build_doc = builder::stream::document{};
     // {
     //     "_id" : 1,
     //     "name" : { "first" : "John", "last" : "Backus" },
@@ -57,7 +84,7 @@ int main(int, char**) {
     //                }
     //     ]
     // }
-    build_doc << "_id" << 1 << "name" << open_document << "first"
+    auto doc_value = build_doc << "_id" << 1 << "name" << open_document << "first"
               << "John"
               << "last"
               << "Backus" << close_document << "contribs" << open_array << "Fortran"
@@ -69,41 +96,17 @@ int main(int, char**) {
               << "IEEE Computer Society" << close_document << open_document << "award"
               << "Draper Prize"
               << "year" << 1993 << "by"
-              << "National Academy of Engineering" << close_document << close_array;
+              << "National Academy of Engineering" << close_document << close_array << finalize;
 
-    bsoncxx::document::view doc = build_doc.view();
-    std::cout << to_json(doc) << std::endl;
-    rapidjson::Document document;
-    document.Parse(to_json(doc).c_str());
-    std::cout << document["_id"].GetInt() << std::endl;
-    for (auto& i : document["contribs"].GetArray()) {
-        std::cout << i.GetString();
-    }
+    //bsoncxx::document::value doc_value = build_doc;
+    auto doc = doc_value.view();
 
     // Once we have the document view, we can use ["key"] or [index] notation to reach into nested
     // documents or arrays.
     auto awards = doc["awards"];
     auto first_award_year = awards[0]["year"];
     auto second_award_year = doc["awards"][1]["year"];
-    auto last_name = doc["name"]["last"];
-
-    // If the key doesn't exist, or index is out of bounds, we get invalid elements.
-    auto invalid1 = doc["name"]["middle"];
-    auto invalid2 = doc["contribs"][1000];
-    if (invalid1 || invalid2) {
-        BSONCXX_UNREACHABLE;  // Not reached.
-    }
-
-    // Similarly, indexed access (either by string or numeric index) into a type that is not
-    // a document or an array yields invalid eleemnts.
-
-    auto invalid3 = doc["_id"]["invalid"];
-    auto invalid4 = doc["name"][3];
-    if (invalid3 || invalid4) {
-        BSONCXX_UNREACHABLE;  // Not reached.
-    }
-
-    // Make all variables used.
-    return (awards && first_award_year && second_award_year && last_name) ? EXIT_SUCCESS
-                                                                          : EXIT_FAILURE;
+    auto last_name = doc["name"]["last"];    
+    cout << bsoncxx::to_json(doc["_id"]) << endl; 
+    cout << bsoncxx::to_json(first_award_year) << endl; 
 }

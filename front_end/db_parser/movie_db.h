@@ -2,7 +2,7 @@
  File Name : movie_db.h
  Purpose :
  Creation Date : 22-05-2017
- Last Modified : Mon May 22 16:56:53 2017
+ Last Modified : Sun May 28 11:21:43 2017
  Created By : Jeasine Ma [jeasinema[at]gmail[dot]com]
 -----------------------------------------------------*/
 #ifndef MOVIE_DB_H
@@ -66,30 +66,34 @@ protected:
     shared_ptr<mongocxx::client> client;
     mongocxx::database db;
     const string mongo_uri = "mongodb://localhost:27017";    
-    string db_name = "movie_db";   
+    string db_name = "default_db";   
 public:
-    BaseDB() {
-        client = DBConn::get_client(mongo_uri);
-        db = (*client)[db_name];
-    }
-    
-    BaseDB(const string& db_name) {
-        client = DBConn::get_client(mongo_uri);
-        this->db_name = db_name;
-        this->db = (*client)[db_name];   
-    }
+    BaseDB() = default;
+    BaseDB(const string& db_name, const string& db_uri = "mongodb://localhost:27017")
+        : db_name(db_name), mongo_uri(db_uri) {}
 
     ~BaseDB() = default;
 }; 
 
 class MovieDB : public BaseDB {
+    const string movie_coll_name = "movie";
+    const string today_movie_coll_name = "today_movie";
 public:
-    MovieDB() = default;
+    MovieDB() 
+        : BaseDB("movie_db")
+    {
+        client = DBConn::get_client(mongo_uri);
+        db = (*client)[db_name];
+    }
     MovieDB(const string& db_name)
-        : BaseDB(db_name) {}
+        : BaseDB(db_name) 
+    {
+        client = DBConn::get_client(mongo_uri);
+        db = (*client)[db_name];
+    }
 
     // ret value do not extract relate movie infos
-    shared_ptr<MovieData> get_movie_data(const string& movie_name);
+    shared_ptr<MovieData> get_movie_data(const string& movie_name, bool with_relate);
     vector<string> get_movie_today(const string& region);
     vector<string> search_movie(const string& movie_name);
 };
