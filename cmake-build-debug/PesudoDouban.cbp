@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="PesudoDouban"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="clang"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\mstch\;CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\libmongocxx-3.1.1\;CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\libbsoncxx-3.1.1\;CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\RapidJSON\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PesudoDouban">
+				<Option output="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/PesudoDouban" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/."/>
+					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./include"/>
+					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./front_end"/>
+					<Add directory="/usr/local/include/mongocxx/v_noabi"/>
+					<Add directory="/usr/local/include/bsoncxx/v_noabi"/>
+					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./third_party/socket.io-client-cpp/build/include"/>
+					<Add directory="/usr/local/Cellar/rapidjson/1.1.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 PesudoDouban"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PesudoDouban/fast">
+				<Option output="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/PesudoDouban" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/."/>
+					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./include"/>
+					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./front_end"/>
+					<Add directory="/usr/local/include/mongocxx/v_noabi"/>
+					<Add directory="/usr/local/include/bsoncxx/v_noabi"/>
+					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./third_party/socket.io-client-cpp/build/include"/>
+					<Add directory="/usr/local/Cellar/rapidjson/1.1.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 PesudoDouban/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PesudoDouban_lib">
+				<Option output="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/libPesudoDouban_lib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/."/>
+					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./include"/>
+					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./front_end"/>
+					<Add directory="/usr/local/include/mongocxx/v_noabi"/>
+					<Add directory="/usr/local/include/bsoncxx/v_noabi"/>
+					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./third_party/socket.io-client-cpp/build/include"/>
+					<Add directory="/usr/local/Cellar/rapidjson/1.1.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 PesudoDouban_lib"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PesudoDouban_lib/fast">
+				<Option output="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/libPesudoDouban_lib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/."/>
+					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./include"/>
+					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./front_end"/>
+					<Add directory="/usr/local/include/mongocxx/v_noabi"/>
+					<Add directory="/usr/local/include/bsoncxx/v_noabi"/>
+					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./third_party/socket.io-client-cpp/build/include"/>
+					<Add directory="/usr/local/Cellar/rapidjson/1.1.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 PesudoDouban_lib/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/front_end/back_end/backend.cpp">
+			<Option target="PesudoDouban_lib"/>
+		</Unit>
+		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/front_end/back_end/backend.h">
+			<Option target="PesudoDouban_lib"/>
+		</Unit>
+		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/front_end/db_parser/movie_db.cpp">
+			<Option target="PesudoDouban_lib"/>
+		</Unit>
+		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/front_end/db_parser/movie_db.h">
+			<Option target="PesudoDouban_lib"/>
+		</Unit>
+		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/front_end/test/main.cpp">
+			<Option target="PesudoDouban"/>
+		</Unit>
+		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/front_end/viewer/base_render.cpp">
+			<Option target="PesudoDouban_lib"/>
+		</Unit>
+		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/front_end/viewer/base_render.h">
+			<Option target="PesudoDouban_lib"/>
+		</Unit>
+		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/../../../../../../../../../usr/local/lib/cmake/mstch/mstch-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\mstch\"/>
+		</Unit>
+		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/../../../../../../../../../usr/local/lib/cmake/mstch/mstch-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\mstch\"/>
+		</Unit>
+		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/../../../../../../../../../usr/local/lib/cmake/mstch/mstch-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\mstch\"/>
+		</Unit>
+		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/../../../../../../../../../usr/local/lib/cmake/mstch/mstch-targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\mstch\"/>
+		</Unit>
+		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/../../../../../../../../../usr/local/lib/cmake/libmongocxx-3.1.1/libmongocxx-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\libmongocxx-3.1.1\"/>
+		</Unit>
+		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/../../../../../../../../../usr/local/lib/cmake/libmongocxx-3.1.1/libmongocxx-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\libmongocxx-3.1.1\"/>
+		</Unit>
+		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/../../../../../../../../../usr/local/lib/cmake/libbsoncxx-3.1.1/libbsoncxx-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\libbsoncxx-3.1.1\"/>
+		</Unit>
+		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/../../../../../../../../../usr/local/lib/cmake/libbsoncxx-3.1.1/libbsoncxx-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\libbsoncxx-3.1.1\"/>
+		</Unit>
+		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/../../../../../../../../../usr/local/lib/cmake/RapidJSON/RapidJSONConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\RapidJSON\"/>
+		</Unit>
+		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/../../../../../../../../../usr/local/lib/cmake/RapidJSON/RapidJSONConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\RapidJSON\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

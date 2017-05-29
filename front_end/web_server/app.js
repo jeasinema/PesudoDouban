@@ -6,6 +6,9 @@ const json = require('koa-json');
 const onerror = require('koa-onerror');
 const bodyparser = require('koa-bodyparser')();
 const logger = require('koa-logger');
+const serve = require('koa-static');
+const mount = require('koa-mount');
+const path = require('path');
 
 const index = require('./routes/index');
 const search = require('./routes/search');
@@ -21,7 +24,19 @@ onerror(app);
 app.use(bodyparser);
 app.use(json());
 app.use(logger());
-app.use(require('koa-static')(__dirname + '/public'));
+// static resources
+app.use(mount('/js', serve(path.join(__dirname, 'views', 'static', 'js'))));
+app.use(mount('/css', serve(path.join(__dirname, 'views', 'static', 'css'))));
+app.use(mount('/img', serve(path.join(__dirname, 'views', 'static', 'img'))));
+app.use(mount('/index/js', serve(path.join(__dirname, 'views', 'static', 'js'))));
+app.use(mount('/index/css', serve(path.join(__dirname, 'views', 'static', 'css'))));
+app.use(mount('/index/img', serve(path.join(__dirname, 'views', 'static', 'img'))));
+app.use(mount('/detail/js', serve(path.join(__dirname, 'views', 'static', 'js'))));
+app.use(mount('/detail/css', serve(path.join(__dirname, 'views', 'static', 'css'))));
+app.use(mount('/detail/img', serve(path.join(__dirname, 'views', 'static', 'img'))));
+app.use(mount('/search/js', serve(path.join(__dirname, 'views', 'static', 'js'))));
+app.use(mount('/search/css', serve(path.join(__dirname, 'views', 'static', 'css'))));
+app.use(mount('/search/img', serve(path.join(__dirname, 'views', 'static', 'img'))));
 
 //app.use(views(__dirname + '/views', {
 //  extension: 'pug'
@@ -40,5 +55,6 @@ app.use(index.routes(), index.allowedMethods());
 app.use(search.routes(), search.allowedMethods());
 app.use(detail.routes(), detail.allowedMethods());
 
+console.log("use all routes!");
 
 module.exports = app;

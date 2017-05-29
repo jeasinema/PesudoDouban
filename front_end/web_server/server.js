@@ -10,6 +10,14 @@ function start(_port, app) {
 }
 var web_socket = null, cpp_socket = null;
 
+function get_cpp_socket() {
+    return cpp_socket;
+}
+
+function get_web_socket() {
+    return cpp_socket;
+}
+
 // socket.io
 function register_callbacks() {
     io.on('connection', (socket) => {
@@ -39,5 +47,7 @@ module.exports =  {
     web_socket : web_socket,
     cpp_socket : cpp_socket,
     start : start,
-    register_callbacks : register_callbacks
+    register_callbacks : register_callbacks,
+    get_cpp_socket : get_cpp_socket,
+    get_web_socket : get_web_socket
 };

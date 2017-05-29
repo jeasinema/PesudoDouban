@@ -22,7 +22,8 @@
     "pug": "^2.0.0-rc.1",
     "socket.io": "^2.0.1",
     "koa-socket":"^4.4.0",
-    "wait-events":"^0.3.2"
+    "wait-events":"^0.3.2",
+    "koa-mount":"^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.8.1"

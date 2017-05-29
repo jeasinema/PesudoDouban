@@ -2,7 +2,7 @@
  File Name :
  Purpose :
  Creation Date : 21-05-2017
- Last Modified : Sun May 28 19:59:03 2017
+ Last Modified : Mon May 29 13:55:58 2017
  Created By : Jeasine Ma [jeasinema[at]gmail[dot]com]
 -----------------------------------------------------*/
 #ifndef BASE_RENDER_H
@@ -31,17 +31,17 @@ using persudo::db_parser::PersudoData;
 
 struct Url {
     // static
-    string china_movie_url;
-    string us_movie_url;
-    string japan_movie_url;
-    string basic_info_url;
-    string actor_info_url;
-    string relate_info_url;
+    string china_movie_url = "/index/china";
+    string us_movie_url = "/index/us";
+    string japan_movie_url = "/index/japan";
+    string basic_info_url = "/basic";
+    string actor_info_url = "/actor";
+    string relate_info_url = "/relate";
 
     // preifix
-    string movie_poster_url_prefix;
-    string movie_name_url_prefix;
-    string person_image_url_prefix;
+    string movie_poster_url_prefix = "http://127.0.0.1/poster/";
+    string movie_name_url_prefix = "http://127.0.0.1/detail/";
+    string person_image_url_prefix = "http://127.0.0.1/image/";
 };
 
 class BaseRender {

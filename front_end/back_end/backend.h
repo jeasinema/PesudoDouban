@@ -2,7 +2,7 @@
  File Name : backend.h
  Purpose :
  Creation Date : 22-05-2017
- Last Modified : Sun May 28 10:39:37 2017
+ Last Modified : Mon May 29 12:36:55 2017
  Created By : Jeasine Ma [jeasinema[at]gmail[dot]com]
 -----------------------------------------------------*/
 #ifndef BACKEND_H
@@ -118,6 +118,7 @@ public:
     
     int start();
     int stop(bool force = false);
+    void handoff();
 };
 
 

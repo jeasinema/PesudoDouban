@@ -8,14 +8,14 @@ router.post('/:keyword', async (ctx, next) => {
     console.log('post /search/');
     var m_keyword = ctx.params.keyword;
     //var m_keyword = ctx.request.body.keyword;
-    if (server.cpp_socket) {
+    if (server.get_cpp_socket()) {
         console.log('cpp_socket exist');
-        server.cpp_socket.emit('server_get_search', {
-            keyword : m_keyword
+        server.get_cpp_socket().emit('server_get_search', {
+            keyword : String(m_keyword)
         });
-        let ret = await waitEvents(server.cpp_socket, ['cpp_send_search'], ['err']);
+        let ret = await waitEvents(server.get_cpp_socket(), ['cpp_send_search'], ['err']);
         console.log('Recv cpp_send_search');
-        ctx.response.body = ret;
+        ctx.response.body = String(ret);
     }
 });
 

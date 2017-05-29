@@ -2,7 +2,7 @@
  File Name : backend.cpp
  Purpose :
  Creation Date : 22-05-2017
- Last Modified : Sun May 28 16:25:59 2017
+ Last Modified : Mon May 29 14:36:59 2017
  Created By : Jeasine Ma [jeasinema[at]gmail[dot]com]
 -----------------------------------------------------*/
 #include <string>
@@ -25,11 +25,16 @@ using db_parser::PersudoData;
 
 int PersudoBackend::register_all() {
     int ret = 0;
-    client.set_open_listener([&]() {
+    client.set_open_listener([&]() {        
+        std::cout << "recv connection!" << std::endl;
         sio::socket::ptr s = client.socket();
+
+        // response to node server    
+        s->emit("cpp_client");
 
         s->on(this->index_site.get_recv_event_name(), sio::socket::event_listener_aux([s, this](string const& name, sio::message::ptr const& data,
                 bool isAck, sio::message::list &ack_resp) {
+            std::cout << "get index site" << std::endl;
             this->index_site.recv_server_data = data; // get it from server 
             sio::message::ptr p = sio::binary_message::create(this->index_site.get_website());
             s->emit(this->index_site.get_send_event_name(), p);
@@ -37,28 +42,32 @@ int PersudoBackend::register_all() {
 
         s->on(this->search_site.get_recv_event_name(), sio::socket::event_listener_aux([s, this](string const& name, sio::message::ptr const& data,
                 bool isAck, sio::message::list &ack_resp) {
-            this->index_site.recv_server_data = data; // get it from server 
+            std::cout << "get search site" << std::endl;
+            this->search_site.recv_server_data = data; // get it from server 
             sio::message::ptr p = sio::binary_message::create(this->search_site.get_website());
             s->emit(this->search_site.get_send_event_name(), p);
         }));
 
         s->on(this->movie_info_site.get_recv_event_name(), sio::socket::event_listener_aux([s, this](string const& name, sio::message::ptr const& data,
                 bool isAck, sio::message::list &ack_resp) {
-            this->index_site.recv_server_data = data; // get it from server 
+            std::cout << "get movie info site" << std::endl;
+            this->movie_info_site.recv_server_data = data; // get it from server 
             sio::message::ptr p = sio::binary_message::create(this->movie_info_site.get_website());
             s->emit(this->movie_info_site.get_send_event_name(), p);
         }));
 
         s->on(this->actor_info_site.get_recv_event_name(), sio::socket::event_listener_aux([s, this](string const& name, sio::message::ptr const& data,
                 bool isAck, sio::message::list &ack_resp) {
-            this->index_site.recv_server_data = data; // get it from server 
+            std::cout << "get actor info site" << std::endl;
+            this->actor_info_site.recv_server_data = data; // get it from server 
             sio::message::ptr p = sio::binary_message::create(this->actor_info_site.get_website());
             s->emit(this->actor_info_site.get_send_event_name(), p);
         }));
 
         s->on(this->relate_info_site.get_recv_event_name(), sio::socket::event_listener_aux([s, this](string const& name, sio::message::ptr const& data,
                 bool isAck, sio::message::list &ack_resp) {
-            this->index_site.recv_server_data = data; // get it from server 
+            std::cout << "get relate info site" << std::endl;
+            this->relate_info_site.recv_server_data = data; // get it from server 
             sio::message::ptr p = sio::binary_message::create(this->relate_info_site.get_website());
             s->emit(this->relate_info_site.get_send_event_name(), p);
         }));
@@ -73,12 +82,16 @@ int PersudoBackend::start() {
         std::cerr << "call back register failed!" << std::endl;
         ret = 1;
     } else {
-        while (!this->client.opened())
-            this->client.connect(this->master_uri);
+        //while (!this->client.opened())
+        //    this->client.connect(this->master_uri);
         std::cerr << "client has been started" << std::endl;
         ret = 0;
     }
     return ret;
+}
+
+void PersudoBackend::handoff() {
+    this->client.connect(this->master_uri);
 }
 
 int PersudoBackend::stop(bool force) {
@@ -99,6 +112,7 @@ IndexSite::IndexSite()
     this->db_name = "movie_db";
     this->render = std::make_shared<IndexRender>("../front_end/web_server/views/static/index.html");
     this->db = std::make_shared<MovieDB>(this->db_name);
+    std::cout << "build indexsite" << std::endl;
 }
 
 shared_ptr<string> IndexSite::get_website() {
@@ -124,6 +138,7 @@ SearchSite::SearchSite()
     this->db_name = "movie_db";
     this->render = std::make_shared<SearchRender>("../front_end/web_server/views/static/search.html");
     this->db = std::make_shared<MovieDB>(this->db_name);
+    std::cout << "build searchsite" << std::endl;
 }
 
 shared_ptr<string> SearchSite::get_website() {
@@ -149,6 +164,7 @@ MovieInfoSite::MovieInfoSite()
     this->db_name = "movie_db";
     this->render = std::make_shared<MovieInfoRender>("../front_end/web_server/views/static/detail.html");
     this->db = std::make_shared<MovieDB>(this->db_name);
+    std::cout << "build movieinfosite" << std::endl;
 }
 
 shared_ptr<string> MovieInfoSite::get_website() {
@@ -171,6 +187,7 @@ ActorInfoSite::ActorInfoSite()
     this->db_name = "movie_db";
     this->render = std::make_shared<ActorInfoRender>("../front_end/web_server/views/static/detail.html");
     this->db = std::make_shared<MovieDB>(this->db_name);
+    std::cout << "build actorinfosite" << std::endl;
 }
 
 shared_ptr<string> ActorInfoSite::get_website() {
@@ -193,6 +210,7 @@ RelateInfoSite::RelateInfoSite()
     this->db_name = "movie_db";
     this->render = std::make_shared<RelateInfoRender>("../front_end/web_server/views/static/detail.html");
     this->db = std::make_shared<MovieDB>(this->db_name);
+    std::cout << "build relateinfosite" << std::endl;
 }
 
 shared_ptr<string> RelateInfoSite::get_website() {

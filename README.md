@@ -5,6 +5,8 @@ To build a douban-like web app.
 - mongodb
 - mongocxx
 - mstch
+- rapidjson
+
 If you are using macOS, all of these above can be directly installed by `Homebrew`.
 
 

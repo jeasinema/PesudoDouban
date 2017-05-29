@@ -2,12 +2,13 @@
  File Name : movie_db.h
  Purpose :
  Creation Date : 22-05-2017
- Last Modified : Sun May 28 11:21:43 2017
+ Last Modified : Mon May 29 11:29:29 2017
  Created By : Jeasine Ma [jeasinema[at]gmail[dot]com]
 -----------------------------------------------------*/
 #ifndef MOVIE_DB_H
 #define MOVIE_DB_H 
 
+#include <iostream>
 #include <string>
 #include <vector>
 #include <memory>
@@ -90,6 +91,7 @@ public:
     {
         client = DBConn::get_client(mongo_uri);
         db = (*client)[db_name];
+        std::cout << "build moviedb" << std::endl;
     }
 
     // ret value do not extract relate movie infos
