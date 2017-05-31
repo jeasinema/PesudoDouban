@@ -5,6 +5,8 @@
 #include <curl/curl.h>
 #include <cstring>
 #include <cstdlib>
+#include <sstream>
+#include <regex>
 
 /*void CRAW::parseHostAndPagePath(const string url, string &hostUrl, string &pagePath){
     hostUrl = url;
@@ -177,5 +179,87 @@ string CRAW::getPageContent(string url){
 }
 }
 
+void CRAW::get_url(string keyword){
+    string url0 =  "https://www.douban.com/tag/" + keyword + "/movie";
+    string str;
+    string pattern = "(<dl>)(.|\\r|\\n)*?(</dl>)";
+    pattern = "[[:alpha:]]*" + pattern + "[[:alpha:]]*";
+    regex r(pattern);
+    for(int i = 0; i < 300; i = i + 15)
+    {
+        stringstream stream;
+        stream<<i;
+        str=stream.str();
+        url0 = url0 + "?start=" + str;
+        string info = getPageContent(url0);
+        for(sregex_iterator it(info.begin(), info.end(), r), end; it != end; ++it){
+            string str = it->str();
+            deal_the_dl(str);
+        }
 
+    }
+        
+}
+
+string CRAW::get_pattern(string page, string pattern){
+    pattern = "[[:alpha:]]*" + pattern + "[[:alpha:]]*";
+    regex r(pattern);
+    sregex_iterator it(page.begin(), page.end(), r);
+    string str = it->str();
+    return str;
+}
+
+char* CRAW::turn_to_char(string str){
+    cout<<str.size()<<endl;
+    char *tmp = new char[str.size()+1];
+    cout<<str.c_str()<<endl;
+    memcpy(tmp, str.c_str(), str.size() + 1);
+    cout<<tmp<<endl;
+    return tmp;
+}
+
+char *CRAW::get_keyinfo(string str){
+    char *tmp = turn_to_char(str);
+    return get_keyinfo(tmp);
+}
+
+char *CRAW::get_keyinfo(char *src){  //获得><之间的信息
+    while(*src)
+    {
+        if(*src == '>')
+            break;
+        src ++;
+    }
+    src ++;
+    char *fp = new char[20];
+    char *it = fp;
+    while (*src) {
+        if(*src == '<')
+            break;
+        if ((*src != ' ') && (*src != '\n') && (*src != '\r')) { // 如果不是空格就复制
+            *it = *src;
+            it++;
+        }
+        src++;
+    }
+    *it = '\0' ; //封闭字符串
+    cout<<fp<<endl;
+    return fp;
+}
+
+
+void CRAW::deal_the_dl(string info){
+    string url0 = get_pattern(info, "http.*?from=tag_all");
+    url.push_back(turn_to_char(url0));
+    
+    string name0 = get_pattern(info, "class=\"title\".*?</a>");
+    name.push_back(get_keyinfo(name0));
+    
+    string tag0 = get_pattern(info, "<div class=\"desc\">(.|\\r|\\n)*?</div>");
+    tag.push_back(get_keyinfo(tag0));
+    
+    string img0 = get_pattern(info, "http.*?jpg");
+    img.push_back(turn_to_char(img0));
+    
+}
 
