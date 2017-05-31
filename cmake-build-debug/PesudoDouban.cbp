@@ -5,7 +5,7 @@
 		<Option title="PesudoDouban"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="clang"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\mstch\;CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\libmongocxx-3.1.1\;CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\libbsoncxx-3.1.1\;CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\RapidJSON\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\mstch\;CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\libmongocxx-3.1.1\;CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\libbsoncxx-3.1.1\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/cmake-build-debug"/>
@@ -47,10 +47,10 @@
 					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/."/>
 					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./include"/>
 					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./front_end"/>
+					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./third_party/jsoncpp/dist"/>
 					<Add directory="/usr/local/include/mongocxx/v_noabi"/>
 					<Add directory="/usr/local/include/bsoncxx/v_noabi"/>
 					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./third_party/socket.io-client-cpp/build/include"/>
-					<Add directory="/usr/local/Cellar/rapidjson/1.1.0/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
@@ -76,10 +76,10 @@
 					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/."/>
 					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./include"/>
 					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./front_end"/>
+					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./third_party/jsoncpp/dist"/>
 					<Add directory="/usr/local/include/mongocxx/v_noabi"/>
 					<Add directory="/usr/local/include/bsoncxx/v_noabi"/>
 					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./third_party/socket.io-client-cpp/build/include"/>
-					<Add directory="/usr/local/Cellar/rapidjson/1.1.0/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
@@ -105,10 +105,10 @@
 					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/."/>
 					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./include"/>
 					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./front_end"/>
+					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./third_party/jsoncpp/dist"/>
 					<Add directory="/usr/local/include/mongocxx/v_noabi"/>
 					<Add directory="/usr/local/include/bsoncxx/v_noabi"/>
 					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./third_party/socket.io-client-cpp/build/include"/>
-					<Add directory="/usr/local/Cellar/rapidjson/1.1.0/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
@@ -134,10 +134,10 @@
 					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/."/>
 					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./include"/>
 					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./front_end"/>
+					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./third_party/jsoncpp/dist"/>
 					<Add directory="/usr/local/include/mongocxx/v_noabi"/>
 					<Add directory="/usr/local/include/bsoncxx/v_noabi"/>
 					<Add directory="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/./third_party/socket.io-client-cpp/build/include"/>
-					<Add directory="/usr/local/Cellar/rapidjson/1.1.0/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
@@ -175,6 +175,9 @@
 		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/front_end/viewer/base_render.h">
 			<Option target="PesudoDouban_lib"/>
 		</Unit>
+		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/third_party/jsoncpp/dist/jsoncpp.cpp">
+			<Option target="PesudoDouban_lib"/>
+		</Unit>
 		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
@@ -201,12 +204,6 @@
 		</Unit>
 		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/../../../../../../../../../usr/local/lib/cmake/libbsoncxx-3.1.1/libbsoncxx-config.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\libbsoncxx-3.1.1\"/>
-		</Unit>
-		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/../../../../../../../../../usr/local/lib/cmake/RapidJSON/RapidJSONConfigVersion.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\RapidJSON\"/>
-		</Unit>
-		<Unit filename="/Users/jeasinema/Documents/InClass/LessonWork/2016-2017_Spring/oop/handin/final/../../../../../../../../../usr/local/lib/cmake/RapidJSON/RapidJSONConfig.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\usr\local\lib\cmake\RapidJSON\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

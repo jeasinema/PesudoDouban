@@ -5,10 +5,10 @@ To build a douban-like web app.
 - mongodb
 - mongocxx
 - mstch
-- rapidjson
+- jsoncpp
 
-If you are using macOS, all of these above can be directly installed by `Homebrew`.
-
+If you are using macOS, all of these above except jsoncpp can be directly installed by `Homebrew`.
+For `jsoncpp`, refer to [this](https://github.com/open-source-parsers/jsoncpp)
 
 #### Build
 ```bash
