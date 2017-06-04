@@ -21,6 +21,7 @@ include_directories(
     ${BASE_PATH}include
     ${BASE_PATH}front_end
     ${BASE_PATH}third_party/jsoncpp/dist
+    ${BASE_PATH}crawler
 )
 
 # add executable
@@ -29,6 +30,12 @@ set (${PROJECT_NAME}_SRC
     ${BASE_PATH}front_end/db_parser/movie_db.cpp
     ${BASE_PATH}front_end/back_end/backend.cpp
     ${BASE_PATH}third_party/jsoncpp/dist/jsoncpp.cpp
+    ${BASE_PATH}crawler/actor.cpp
+    ${BASE_PATH}crawler/CRAW.cpp
+    ${BASE_PATH}crawler/daily_movie.cpp
+    ${BASE_PATH}crawler/movie.cpp
+    ${BASE_PATH}crawler/regex.cpp
+    ${BASE_PATH}crawler/url.cpp
 )
 
 # generate project as a lib, so we can reuse it when testing
