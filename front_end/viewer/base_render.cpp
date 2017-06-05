@@ -67,11 +67,14 @@ shared_ptr<string> MovieInfoRender::render(shared_ptr<MetaData> _data_) {
     auto data = std::static_pointer_cast<PersudoData>(_data_);
     if (data->movie_data.size() == 0) std::cerr << "movie_data size is 0!" << std::endl;
     mstch::map context{
-        { "basic_info_url", this->_url_.basic_info_url },
+        { "basic_info_url", build_url(this->_url_.basic_info_url,
+                                      data->movie_data[0]->movie_name) },
         { "is_basic_info", true },
-        { "actor_info_url", this->_url_.actor_info_url },
+        { "actor_info_url", build_url(this->_url_.actor_info_url,
+                                      data->movie_data[0]->movie_name) },
         { "is_actor_info", false },
-        { "relate_info_url", this->_url_.relate_info_url },
+        { "relate_info_url", build_url(this->_url_.relate_info_url,
+                                       data->movie_data[0]->movie_name) },
         { "is_relate_info", false },
         { "movie_poster_url", build_url(this->_url_.movie_poster_url_prefix 
                 ,data->movie_data[0]->movie_poster_id) },
@@ -79,7 +82,7 @@ shared_ptr<string> MovieInfoRender::render(shared_ptr<MetaData> _data_) {
         { "movie_rate", data->movie_data[0]->movie_rate },
         { "movie_level", data->movie_data[0]->movie_level },
         { "movie_time", data->movie_data[0]->movie_time },
-        { "movie_class", extract_movie_class(data->movie_data[0]) },
+        { "movie_classes", extract_movie_class(data->movie_data[0]) },
         { "movie_date", data->movie_data[0]->movie_date },
         { "movie_detail", *(data->movie_data[0]->movie_detail) },
         { "movie_critic", extract_movie_critic(data->movie_data[0]) }
@@ -93,19 +96,25 @@ using db_parser::PersudoData;
 shared_ptr<string> ActorInfoRender::render(shared_ptr<MetaData> _data_) {
     auto data = std::static_pointer_cast<PersudoData>(_data_);
     if (data->movie_data.size() == 0) std::cerr << "movie_data size is 0!" << std::endl;
+    if (data->movie_data[0]->movie_director.size() == 0) std::cerr << "movie_director size is 0!" << std::endl;
+    if (data->movie_data[0]->movie_writer.size() == 0) std::cerr << "movie_writer size is 0!" << std::endl;
+    if (data->movie_data[0]->movie_star.size() == 0) std::cerr << "movie_star size is 0!" << std::endl;
     mstch::map context{
-        { "basic_info_url", this->_url_.basic_info_url },
+        { "basic_info_url", build_url(this->_url_.basic_info_url,
+                                      data->movie_data[0]->movie_name) },
         { "is_basic_info", false },
-        { "actor_info_url", this->_url_.actor_info_url },
+        { "actor_info_url", build_url(this->_url_.actor_info_url,
+                                      data->movie_data[0]->movie_name) },
         { "is_actor_info", true },
-        { "relate_info_url", this->_url_.relate_info_url },
+        { "relate_info_url", build_url(this->_url_.relate_info_url,
+                                       data->movie_data[0]->movie_name) },
         { "is_relate_info", false },
-        { "director_image_url", build_url(this->_url_.person_image_url_prefix
-                ,data->movie_data[0]->movie_director[0].image_id) },
-        { "director_name", data->movie_data[0]->movie_director[0].name },
-        { "writer_image_url", build_url(this->_url_.person_image_url_prefix
-                ,data->movie_data[0]->movie_writer[0].image_id) },
-        { "writer_name", data->movie_data[0]->movie_writer[0].name },
+        { "director_image_url", build_url(this->_url_.person_image_url_prefix,
+                data->movie_data[0]->movie_director.size() == 0 ? "" : data->movie_data[0]->movie_director[0].image_id) },
+        { "director_name", data->movie_data[0]->movie_director.size() == 0 ? "路人甲" : data->movie_data[0]->movie_director[0].name },
+        { "writer_image_url", build_url(this->_url_.person_image_url_prefix,
+                data->movie_data[0]->movie_writer.size() == 0 ? "" : data->movie_data[0]->movie_writer[0].image_id) },
+        { "writer_name", data->movie_data[0]->movie_writer.size() == 0 ? "路人甲" : data->movie_data[0]->movie_writer[0].name },
         { "actors", extract_actor_info(data->movie_data[0]) }
     };    
 
@@ -118,12 +127,15 @@ shared_ptr<string> RelateInfoRender::render(shared_ptr<MetaData> _data_) {
     if (data->movie_data.size() == 0) std::cerr << "movie_data size is 0!" << std::endl;
     bool no_movie = (data->movie_data[0]->movie_relate.size() == 0);
     mstch::map context{
-        { "basic_info_url", this->_url_.basic_info_url },
+        { "basic_info_url", build_url(this->_url_.basic_info_url,
+                                      data->movie_data[0]->movie_name) },
         { "is_basic_info", false },
-        { "actor_info_url", this->_url_.actor_info_url },
-        { "is_actor_info", true },
-        { "relate_info_url", this->_url_.relate_info_url },
-        { "is_relate_info", false },
+        { "actor_info_url", build_url(this->_url_.actor_info_url,
+                                      data->movie_data[0]->movie_name) },
+        { "is_actor_info", false },
+        { "relate_info_url", build_url(this->_url_.relate_info_url,
+                                       data->movie_data[0]->movie_name) },
+        { "is_relate_info", true },
         { "no_movie", no_movie },
         { "movies", extract_movie_info(data) }
     };

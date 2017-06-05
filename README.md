@@ -8,7 +8,7 @@ To build a douban-like web app.
 - jsoncpp
 
 If you are using macOS, all of these above except jsoncpp can be directly installed by `Homebrew`.
-For `jsoncpp`, refer to [this](https://github.com/open-source-parsers/jsoncpp)
+For `jsoncpp`, refer to [this](https://github.com/open-source-parsers/jsoncpp#using-jsoncpp-in-your-project)
 
 #### Build
 ```bash
@@ -20,7 +20,7 @@ $ cmake ..; make
 ```bash
 $ cd web
 $ npm install
-$ npm start  #listen@localhost:8088
+$ npm start  #listen@localhost:3000
 ```
 
 #### Run unit test

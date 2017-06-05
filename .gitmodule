@@ -1,3 +1,11 @@
 [submodule "mstch"]
 	path = ./third_party/mstch
 	url = https://github.com/no1msd/mstch
+
+[submodule "jsoncpp"]
+	path = ./third_party/jsoncpp
+	url = https://github.com/open-source-parsers/jsoncpp
+
+[submodule "socket.io-client-cpp"]
+	path = ./third_party/socket.io-client-cpp
+	url = https://github.com/socketio/socket.io-client-cpp

@@ -109,7 +109,7 @@ IndexSite::IndexSite()
     // create render and base site
     this->recv_event_name = "server_get_index";
     this->send_event_name = "cpp_send_index";
-    this->db_name = "movie_db";
+    this->db_name = "moviedb";
     this->render = std::make_shared<IndexRender>("../front_end/web_server/views/static/index.html");
     this->db = std::make_shared<MovieDB>(this->db_name);
     std::cout << "build indexsite" << std::endl;
@@ -135,20 +135,26 @@ SearchSite::SearchSite()
     // create render and base site
     this->recv_event_name = "server_get_search";
     this->send_event_name = "cpp_send_search";
-    this->db_name = "movie_db";
+    this->db_name = "moviedb";
     this->render = std::make_shared<SearchRender>("../front_end/web_server/views/static/search.html");
     this->db = std::make_shared<MovieDB>(this->db_name);
     std::cout << "build searchsite" << std::endl;
 }
 
+// TODO: Now we just send the keyword in js...
 shared_ptr<string> SearchSite::get_website() {
-    string keyword = recv_server_data->get_map().at("keyword")->get_string();
+    auto keywords = recv_server_data->get_map().at("keyword")->get_vector();
     auto db = std::static_pointer_cast<MovieDB>(this->db);
-    auto movies = db->search_movie(keyword);
+    //auto movies = db->search_movie(keyword);
+    vector<string> movies;
+    for (auto& i : keywords) {
+        movies.push_back(i->get_string());
+    }
 
     auto metadata = std::make_shared<PersudoData>();
     for (auto& i : movies) {
         auto movie = db->get_movie_data(i, false);
+        if (movie->movie_name == "x-men") continue; // TODO: x-men means there is no real movie
         metadata->movie_data.push_back(movie);
     }
 
@@ -161,7 +167,7 @@ MovieInfoSite::MovieInfoSite()
     // create render and base site
     this->recv_event_name = "server_get_movieinfo";
     this->send_event_name = "cpp_send_movieinfo";
-    this->db_name = "movie_db";
+    this->db_name = "moviedb";
     this->render = std::make_shared<MovieInfoRender>("../front_end/web_server/views/static/detail.html");
     this->db = std::make_shared<MovieDB>(this->db_name);
     std::cout << "build movieinfosite" << std::endl;
@@ -184,7 +190,7 @@ ActorInfoSite::ActorInfoSite()
     // create render and base site
     this->recv_event_name = "server_get_actorinfo";
     this->send_event_name = "cpp_send_actorinfo";
-    this->db_name = "movie_db";
+    this->db_name = "moviedb";
     this->render = std::make_shared<ActorInfoRender>("../front_end/web_server/views/static/detail.html");
     this->db = std::make_shared<MovieDB>(this->db_name);
     std::cout << "build actorinfosite" << std::endl;
@@ -207,7 +213,7 @@ RelateInfoSite::RelateInfoSite()
     // create render and base site
     this->recv_event_name = "server_get_relateinfo";
     this->send_event_name = "cpp_send_relateinfo";
-    this->db_name = "movie_db";
+    this->db_name = "moviedb";
     this->render = std::make_shared<RelateInfoRender>("../front_end/web_server/views/static/detail.html");
     this->db = std::make_shared<MovieDB>(this->db_name);
     std::cout << "build relateinfosite" << std::endl;

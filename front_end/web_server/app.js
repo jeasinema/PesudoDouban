@@ -28,15 +28,27 @@ app.use(logger());
 app.use(mount('/js', serve(path.join(__dirname, 'views', 'static', 'js'))));
 app.use(mount('/css', serve(path.join(__dirname, 'views', 'static', 'css'))));
 app.use(mount('/img', serve(path.join(__dirname, 'views', 'static', 'img'))));
+app.use(mount('/fonts', serve(path.join(__dirname, 'views', 'static', 'fonts'))));
 app.use(mount('/index/js', serve(path.join(__dirname, 'views', 'static', 'js'))));
 app.use(mount('/index/css', serve(path.join(__dirname, 'views', 'static', 'css'))));
 app.use(mount('/index/img', serve(path.join(__dirname, 'views', 'static', 'img'))));
-app.use(mount('/detail/js', serve(path.join(__dirname, 'views', 'static', 'js'))));
-app.use(mount('/detail/css', serve(path.join(__dirname, 'views', 'static', 'css'))));
-app.use(mount('/detail/img', serve(path.join(__dirname, 'views', 'static', 'img'))));
+app.use(mount('/index/fonts', serve(path.join(__dirname, 'views', 'static', 'fonts'))));
+app.use(mount('/detail/movieinfo/js', serve(path.join(__dirname, 'views', 'static', 'js'))));
+app.use(mount('/detail/movieinfo/css', serve(path.join(__dirname, 'views', 'static', 'css'))));
+app.use(mount('/detail/movieinfo/img', serve(path.join(__dirname, 'views', 'static', 'img'))));
+app.use(mount('/detail/movieinfo/fonts', serve(path.join(__dirname, 'views', 'static', 'fonts'))));
+app.use(mount('/detail/actorinfo/js', serve(path.join(__dirname, 'views', 'static', 'js'))));
+app.use(mount('/detail/actorinfo/css', serve(path.join(__dirname, 'views', 'static', 'css'))));
+app.use(mount('/detail/actorinfo/img', serve(path.join(__dirname, 'views', 'static', 'img'))));
+app.use(mount('/detail/actorinfo/fonts', serve(path.join(__dirname, 'views', 'static', 'fonts'))));
+app.use(mount('/detail/relateinfo/js', serve(path.join(__dirname, 'views', 'static', 'js'))));
+app.use(mount('/detail/relateinfo/css', serve(path.join(__dirname, 'views', 'static', 'css'))));
+app.use(mount('/detail/relateinfo/img', serve(path.join(__dirname, 'views', 'static', 'img'))));
+app.use(mount('/detail/relateinfo/fonts', serve(path.join(__dirname, 'views', 'static', 'fonts'))));
 app.use(mount('/search/js', serve(path.join(__dirname, 'views', 'static', 'js'))));
 app.use(mount('/search/css', serve(path.join(__dirname, 'views', 'static', 'css'))));
 app.use(mount('/search/img', serve(path.join(__dirname, 'views', 'static', 'img'))));
+app.use(mount('/search/fonts', serve(path.join(__dirname, 'views', 'static', 'fonts'))));
 
 //app.use(views(__dirname + '/views', {
 //  extension: 'pug'

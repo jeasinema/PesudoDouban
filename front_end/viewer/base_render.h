@@ -12,6 +12,7 @@
 #include <vector>
 #include <map>
 #include <memory>
+#include <iostream>
 
 #include <mstch/mstch.hpp>
 
@@ -34,14 +35,17 @@ struct Url {
     string china_movie_url = "/index/china";
     string us_movie_url = "/index/us";
     string japan_movie_url = "/index/japan";
-    string basic_info_url = "/basic";
-    string actor_info_url = "/actor";
-    string relate_info_url = "/relate";
+    string basic_info_url = "http://127.0.0.1:3000/detail/movieinfo/";
+    string actor_info_url = "http://127.0.0.1:3000/detail/actorinfo/";
+    string relate_info_url = "http://127.0.0.1:3000/detail/relateinfo/";
 
     // preifix
-    string movie_poster_url_prefix = "http://127.0.0.1/poster/";
-    string movie_name_url_prefix = "http://127.0.0.1/detail/";
-    string person_image_url_prefix = "http://127.0.0.1/image/";
+    // string movie_poster_url_prefix = "http://127.0.0.1/poster/";
+    // string movie_name_url_prefix = "http://127.0.0.1/detail/";
+    // string person_image_url_prefix = "http://127.0.0.1/image/";
+    string movie_poster_url_prefix = "";
+    string movie_name_url_prefix = "http://127.0.0.1:3000/detail/movieinfo/";
+    string person_image_url_prefix = "";
 };
 
 class BaseRender {
@@ -64,6 +68,10 @@ public:
 class PersudoRender : public BaseRender {
 protected:
     Url _url_;
+
+    // limits
+    int max_actor = 3;
+    int max_class = 3;
 
     // utils
     mstch::array extract_actor_info(shared_ptr<MovieData> data); 
@@ -112,6 +120,9 @@ inline mstch::array PersudoRender::extract_movie_star_name(shared_ptr<MovieData>
         };
         ret.push_back(element);
     }
+    if (ret.size() > this->max_actor) {
+        ret.resize(this->max_actor);
+    }
     return ret;
 }
 
@@ -122,6 +133,9 @@ inline mstch::array PersudoRender::extract_movie_class(shared_ptr<MovieData> dat
             { "movie_class", i }
         };
         ret.push_back(element);
+    }
+    if (ret.size() > this->max_class) {
+        ret.resize(this->max_class);
     }
     return ret;
 }
@@ -156,18 +170,19 @@ inline mstch::array PersudoRender::extract_movie_info(shared_ptr<PersudoData> da
     mstch::array ret;
     if (data->movie_data.size() != 0) {  // empty list == false
         for (auto& i : data->movie_data) {
+            std::cout << "now deal with " << i->movie_name << std::endl;
             mstch::map element{
                 { "movie_poster_url", build_url(this->_url_.movie_poster_url_prefix 
                         ,i->movie_poster_id) },
                 { "movie_name", i->movie_name },
                 { "movie_name_url", build_url(this->_url_.movie_name_url_prefix 
-                        ,i->movie_name_id) },
+                        ,i->movie_name) },  // TODO: just use movie name
                 { "movie_date", i->movie_date },
                 { "movie_time", i->movie_time },
                 { "movie_rate", i->movie_rate },
                 { "movie_stars", extract_movie_star_name(i) },
                 { "movie_classes", extract_movie_class(i) },
-                { "movie_abstract", *(i->movie_abstract) }
+                { "movie_abstract", i->movie_abstract == nullptr ? "" : *(i->movie_abstract) }
             };
             ret.push_back(element);
         }

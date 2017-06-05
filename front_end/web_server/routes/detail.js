@@ -7,8 +7,9 @@ router.prefix('/detail');
 router.get('/movieinfo/:id', async (ctx, next) => {
     console.log('post /detail/movieinfo');
     var m_id = ctx.params.id;
+    console.log(m_id);
     //var m_keyword = ctx.request.body.keyword;
-    if (server.get_cpp_socket()) {
+    if (server.get_cpp_socket() && m_id != null && m_id != -1) {
         console.log('cpp_socket exist' + String(m_id));
         server.get_cpp_socket().emit('server_get_movieinfo', {
             movie : String(m_id)
@@ -22,9 +23,10 @@ router.get('/movieinfo/:id', async (ctx, next) => {
 router.get('/actorinfo/:id', async (ctx, next) => {
     console.log('post /detail/actorinfo');
     var m_id = ctx.params.id;
+    console.log(m_id);
     //var m_keyword = ctx.request.body.keyword;
-    if (server.get_cpp_socket()) {
-        console.log('cpp_socket exist' + String(m_id));
+    if (server.get_cpp_socket() && m_id != null && m_id != -1) {
+        console.log('cpp_socket exist ' + String(m_id));
         server.get_cpp_socket().emit('server_get_actorinfo', {
             movie : String(m_id)
         });
@@ -37,8 +39,9 @@ router.get('/actorinfo/:id', async (ctx, next) => {
 router.get('/relateinfo/:id', async (ctx, next) => {
     console.log('post /detail/relateinfo');
     var m_id = ctx.params.id;
+    console.log(m_id);
     //var m_keyword = ctx.request.body.keyword;
-    if (server.get_cpp_socket()) {
+    if (server.get_cpp_socket() && m_id != null && m_id != -1) {
         console.log('cpp_socket exist');
         server.get_cpp_socket().emit('server_get_relateinfo', {
             movie : String(m_id)
