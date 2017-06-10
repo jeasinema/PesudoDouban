@@ -11,17 +11,21 @@
 char* REGEX::turn_to_char(string str){
     cout<<str.size()<<endl;
     char *tmp = new char[str.size()+1];
-    cout<<str.c_str()<<endl;
+    //cout<<str.c_str()<<endl;
     memcpy(tmp, str.c_str(), str.size() + 1);
-    cout<<tmp<<endl;
+    //cout<<tmp<<endl;
+    cout << "23333" << endl;
     return tmp;
 }
 
 string REGEX::get_pattern(string page, string pattern){
+    cout << "1.1" << endl;
     pattern = "[[:alpha:]]*" + pattern + "[[:alpha:]]*";
     regex r(pattern);
     sregex_iterator it(page.begin(), page.end(), r);
+    cout << "1.2" << endl;
     string str = it->str();
+    cout << "1.3" << endl;
     return str;
 }
 
@@ -69,7 +73,8 @@ char *REGEX::get_keyinfo(char *src, char pre, char aft){  //获得pre aft之间�
         src++;
     }
     *it = '\0' ; //封闭字符串
-    cout<<fp<<endl;
+    //cout<<fp<<endl;
+    cout << "ahah" << endl;
     return fp;
 }
 

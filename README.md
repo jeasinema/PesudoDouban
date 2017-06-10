@@ -33,11 +33,15 @@ $ cmake -Dtest:=true ../; make test
 ```plain text
 ./third\_party   external libraries source
     |
-    + -- lib 1
+    + -- jsoncpp
     |
-    + -- lib 2
-
-./web web front
+    + -- mstch
+    |
+    + -- ...
+./crawler       crawler wirtten in c++
+./data          mongoDB data
+./front_end     web realted sources
+./script        some utils
 ```
 
 #### License 

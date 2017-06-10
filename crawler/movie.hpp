@@ -20,6 +20,25 @@ struct MOVIE{
     vector<char*> director;
     vector<char*> writer;
     vector<char*> actor;
+
+    char *getTitle() const;
+
+    const vector<char *, allocator<char *>> &getDirector() const;
+
+    const vector<char *, allocator<char *>> &getWriter() const;
+
+    const vector<char *, allocator<char *>> &getActor() const;
+
+    const vector<char *, allocator<char *>> &getGenre() const;
+
+    const vector<char *, allocator<char *>> &getDate() const;
+
+    char *getDuration() const;
+
+    char *getPoster() const;
+
+    char *getImdb() const;
+
     vector<char*> genre;
     vector<char*> date;
     char *duration;
@@ -35,6 +54,7 @@ public:
     }
     void deal_piece(string info){}
     virtual void get_data(string url) = 0;
+    void print_info();
 };
 
 class Douban_m : public MOVIE_DATA{

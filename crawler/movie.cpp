@@ -12,6 +12,9 @@ void Douban_m::get_data(string html){
     //获得info<div>
     string info = get_pattern(html, "(<div id=\"info\">)(.|\\r|\\n)*?(</div>)");
     deal_info(info);//处理info字段
+    cout << "233" << endl;
+    //cout << movie->getImdb() << endl;
+    cout << "fuck" << endl;
 }
 
 void Douban_m::deal_info(string info)
@@ -65,3 +68,71 @@ void Imdb_m::deal_info(string info){
     string date = get_pattern(info, "See more release dates(.|\\r|\\n)*?<meta");
     movie->date.push_back(get_keyinfo(date, '>', '<'));
 }
+
+ void MOVIE_DATA::print_info() {
+     if(movie == 0)
+     {
+         cout << "failed." << endl;
+         return;
+     }
+     cout << "imdb: " << movie->imdb << endl;
+     cout << "duration: " << movie->duration << endl;
+     cout << "title: " << movie->title << endl;
+     cout << "poster: " << movie->poster << endl;
+     for (auto &e: movie->actor)
+     {
+         cout << "actor: " << e << endl;
+     }
+     for (auto &e: movie->date)
+     {
+         cout << "date: " << e << endl;
+     }
+     for (auto &e: movie->director)
+     {
+         cout << "director: " << e << endl;
+     }
+     for (auto &e: movie->genre)
+     {
+         cout << "genre: " << e << endl;
+     }
+     for (auto &e: movie->writer)
+     {
+         cout << "writer: " << e << endl;
+     }
+ }
+
+ char *MOVIE::getTitle() const {
+     return title;
+ }
+
+ const vector<char *, allocator<char *>> &MOVIE::getDirector() const {
+     return director;
+ }
+
+ const vector<char *, allocator<char *>> &MOVIE::getWriter() const {
+     return writer;
+ }
+
+ const vector<char *, allocator<char *>> &MOVIE::getActor() const {
+     return actor;
+ }
+
+ const vector<char *, allocator<char *>> &MOVIE::getGenre() const {
+     return genre;
+ }
+
+ const vector<char *, allocator<char *>> &MOVIE::getDate() const {
+     return date;
+ }
+
+ char *MOVIE::getDuration() const {
+     return duration;
+ }
+
+ char *MOVIE::getPoster() const {
+     return poster;
+ }
+
+ char *MOVIE::getImdb() const {
+     return imdb;
+ }
