@@ -1,4 +1,4 @@
-### PesudoDouban
+### PseudoDouban
 To build a douban-like web app.
 
 #### Dependency
